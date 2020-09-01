@@ -2,7 +2,8 @@ const db = require("../models");
 
 //! ----- Posts Index  -----
 const index = (req, res) => {
-  res.send("<h1>Posts Index</h1>");
+  console.log("Posts Index Route Hit");
+  return res.status(200);
 };
 
 //! ----- Posts   -----

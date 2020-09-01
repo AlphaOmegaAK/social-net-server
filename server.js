@@ -2,6 +2,8 @@ const express = require("express");
 
 const app = express();
 
+//? ----- Config -----
+const routes = require("./routes");
 require("dotenv").config();
 
 app.get("/", (req, res) => {

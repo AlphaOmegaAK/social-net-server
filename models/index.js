@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const connString =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/social_net";
+  process.env.MONGODB_URI || "mongodb://localhost:27017/socialNet";
 
 const configObj = {
   useNewUrlParser: true,

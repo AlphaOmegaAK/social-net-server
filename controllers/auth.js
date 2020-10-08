@@ -7,11 +7,12 @@ const db = require('../models');
 // @ Register api/v1/auth/register
 // @ Access Public
 const register = async (req, res) => {
-    console.log("Register Route", req.body);
+    console.log("Register Route");
     if (!req.body.username || !req, body.email || req.body.password || req.body.firstName) {
+
         return res.status(400).json({
             message: "All fields must be filled for Registration. Please try again."
-        })
+        });
     }
     if (req.body.password.length < 6) {
         return res.status(400).json({
@@ -55,7 +56,7 @@ const register = async (req, res) => {
 // @ Register api/v1/auth/Login
 // @ Access Public
 
-const login = (req, res) => {
+const login = async (req, res) => {
     console.log(req.body);
 
     try {
@@ -86,10 +87,11 @@ const login = (req, res) => {
         };
 
         const token = await jwt.sign(payload, secret, expiration);
-        res.status(200).json({ token });
+        res.status(200).json({
+            token
+        });
 
-    }
-    catch (err) {
+    } catch (err) {
         console.error(err);
         return res.status(500).json({
             status: 500,
@@ -106,13 +108,15 @@ const verify = (req, res, next) => {
             });
         }
         req.currentUser = decodedUser;
-        res.status(200).json({ user: decodedUser })
+        res.status(200).json({
+            user: decodedUser
+        })
         next()
     });
 };
 
 module.exports = {
     register,
-    login, 
+    login,
     verify
 }

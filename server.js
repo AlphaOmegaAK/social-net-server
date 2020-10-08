@@ -24,7 +24,7 @@ app.use('/', (req, res) => {
 });
 //? ----- Routes -----
 //  Auth Routes
-// app.use("/api/v1/auth", routes.auth);
+app.use("/api/v1/auth", routes.auth);
 // User Routes
 app.use("/api/v1/users", routes.users);
 // Profile Routes

@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const ctrl = require("../controllers/");
 
-// @ GET
-// @ Access
+// @ get
+// @ access
 router.get("/", ctrl.posts.index);
 // @ GET
 // @ Access

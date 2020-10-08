@@ -98,8 +98,21 @@ const login = (req, res) => {
     }
 };
 
+const verify = (req, res, next) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedUser) => {
+        if (err || !decodedUser) {
+            return res.status(401).json({
+                message: "You Shall Not Pass!"
+            });
+        }
+        req.currentUser = decodedUser;
+        res.status(200).json({ user: decodedUser })
+        next()
+    });
+};
 
 module.exports = {
     register,
-    login
+    login, 
+    verify
 }
